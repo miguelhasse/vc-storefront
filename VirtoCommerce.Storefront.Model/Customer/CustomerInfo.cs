@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using VirtoCommerce.Storefront.Model.Common;
 using VirtoCommerce.Storefront.Model.Order;
 using VirtoCommerce.Storefront.Model.Quote;
+using VirtoCommerce.Storefront.Model.Security;
 using VirtoCommerce.Storefront.Model.Subscriptions;
 
 namespace VirtoCommerce.Storefront.Model.Customer
@@ -22,6 +23,14 @@ namespace VirtoCommerce.Storefront.Model.Customer
         /// Security account Id
         /// </summary>
         public string UserId { get; set; }
+        /// <summary>
+        /// Type of account fro this customer: personal or b2b
+        /// </summary>
+        public AccountType AccountType { get; set; }
+        /// <summary>
+        /// Returns company name for b2b account
+        /// </summary>
+        public string CompanyName { get; set; }
         /// <summary>
         /// Security account user name
         /// </summary>

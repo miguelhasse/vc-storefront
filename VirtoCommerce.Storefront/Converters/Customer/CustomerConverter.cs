@@ -142,6 +142,8 @@ namespace VirtoCommerce.Storefront.Converters
             result.FullName = string.Join(" ", formModel.FirstName, formModel.LastName);
             result.FirstName = formModel.FirstName;
             result.LastName = formModel.LastName;
+            result.AccountType = formModel.AccountType;
+            result.CompanyName = formModel.CompanyName;
 
             if (string.IsNullOrEmpty(result.FullName) || string.IsNullOrWhiteSpace(result.FullName))
             {

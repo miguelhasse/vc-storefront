@@ -89,6 +89,15 @@ namespace VirtoCommerce.Storefront.Services
         public virtual async Task CreateCustomerAsync(CustomerInfo customer)
         {
             var contact = customer.ToCustomerContactDto();
+
+            if (customer.AccountType == Model.Security.AccountType.Distributor) {
+                var organization = new customerDto.Organization { Name = customer.CompanyName };
+                var result = await _customerApi.CustomerModule.CreateOrganizationAsync(organization);
+
+                contact.Organizations = new List<string>();
+                contact.Organizations.Add(result.Id);
+            }
+
             await _customerApi.CustomerModule.CreateContactAsync(contact);
         }
 
