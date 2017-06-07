@@ -108,7 +108,9 @@
             "country_select_placeholder": "Select country",
             "province": "State",
             "zip": "Zip / Postal code",
-            "phone": "Phone (optional)"
+            "phone": "Phone (optional)",
+            "type": "Select address type",
+            "required_type": "Please select address type"
         }
     },
     "date_formats": {

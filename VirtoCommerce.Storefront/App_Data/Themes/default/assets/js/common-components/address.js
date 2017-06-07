@@ -15,6 +15,8 @@ storefrontApp.component('vcAddress', {
     },
     controller: ['$scope', function ($scope) {
         var ctrl = this;
+        ctrl.types = [{ id: 'billing', name: 'Billing' }, { id: 'shipping', name: 'Shipping' }, { id: 'billingAndShipping', name: 'Billing and Shipping' }];
+        
         this.$onInit = function () {
             if (ctrl.validationContainer)
                 ctrl.validationContainer.addComponent(this);
@@ -75,7 +77,14 @@ storefrontApp.component('vcAddress', {
         };
 
         function stringifyAddress(address) {
-            var stringifiedAddress = address.firstName + ' ' + address.lastName + ', ';
+            var addressType = '';
+
+            var type = _.find(ctrl.types, function (i) { return i.id == ctrl.address.type });
+            if (type)
+                addressType = '[' + type.name + '] ';
+
+            var stringifiedAddress = addressType;
+            stringifiedAddress += address.firstName + ' ' + address.lastName + ', ';
             stringifiedAddress += address.organization ? address.organization + ', ' : '';
             stringifiedAddress += address.countryName + ', ';
             stringifiedAddress += address.regionName ? address.regionName + ', ' : '';

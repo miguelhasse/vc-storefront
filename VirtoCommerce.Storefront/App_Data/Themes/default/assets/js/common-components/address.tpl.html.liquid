@@ -7,6 +7,16 @@
             </select>
         </div>
 
+      <div class="form-group form-select" ng-class="{'error': $ctrl.form.$submitted && $ctrl.form.Type.$invalid }">
+            <label for="#" class="form-label">{{ 'checkout.address.type' | t }}</label>
+            <select ng-model="$ctrl.address.type" ng-options="c.id as c.name for c in $ctrl.types" required="required" name="Type" class="form-input" size="1">
+              <option value="">{{ 'checkout.address.type' | t }}</option>
+            </select>
+        </div>
+        <p class="form-error" ng-if="$ctrl.form.$submitted && $ctrl.form.Type.$error.required">
+            {{ 'checkout.address.required_type' | t }}
+        </p>
+
         <div class="form-group">
             <div class="cols">
                 <div class="col col-50">

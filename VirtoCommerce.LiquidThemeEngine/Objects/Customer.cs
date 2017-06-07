@@ -133,5 +133,18 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
         /// The user name of an operator who has loggen in on behalf of a customer
         /// </summary>
         public string OperatorUserName { get; set; }
+
+        /// <summary>
+        /// Type of account for this customer: personal or distributor
+        /// </summary>
+        public bool IsDistributorAccount { get; set; }
+        /// <summary>
+        /// Returns company id for distributor account
+        /// </summary>
+        public string CompanyId { get; set; }
+        /// <summary>
+        /// Returns company name for distributor account
+        /// </summary>
+        public string CompanyName { get; set; }
     }
 }

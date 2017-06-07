@@ -68,6 +68,16 @@ namespace VirtoCommerce.Storefront.Services
                 if (contact != null)
                 {
                     result = contact.ToCustomerInfo();
+
+                    if (contact.Organizations.Any()) {
+                        var organization = await _customerApi.CustomerModule.GetOrganizationByIdAsync(contact.Organizations.First());
+
+                        if (organization != null) {
+                            result.CompanyId = organization.Id;
+                            result.CompanyName = organization.Name;
+                            result.AccountType = Model.Security.AccountType.Distributor;
+                        }
+                    }
                 }
                 return result;
             });
@@ -145,6 +155,19 @@ namespace VirtoCommerce.Storefront.Services
             var result = _customerApi.CustomerModule.SearchVendors(criteria);
             return new StaticPagedList<Vendor>(result.Vendors.Select(x => x.ToVendor(workContext.CurrentLanguage, workContext.CurrentStore)), pageNumber, pageSize, result.TotalCount.Value);
         }
+
+        public virtual Organization GetOrganizationById(string organizationId)
+        {
+            var retVal = _customerApi.CustomerModule.GetOrganizationById(organizationId).ToOrganization();
+            return retVal;
+        }
+
+        public virtual async Task UpdateOrganizationAsync(Organization organization)
+        {
+            var organizationDto = organization.ToCustomerOrganization();
+            await _customerApi.CustomerModule.UpdateOrganizationAsync(organizationDto);
+        }
+
         #endregion
 
         #region IObserver<CreateOrderEvent> Members

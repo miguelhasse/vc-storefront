@@ -64,11 +64,14 @@ namespace VirtoCommerce.Storefront
             // Account API
             routes.AddStorefrontRoute("API.Account.GetCurrentCustomer", "storefrontapi/account", new { controller = "ApiAccount", action = "GetCurrentCustomer" },
               new { httpMethod = new HttpMethodConstraint("GET") });
+            routes.AddStorefrontRoute("API.Account.GetCurrentCustomerOrganization", "storefrontapi/account/organization", new { controller = "ApiAccount", action = "GetCurrentCustomerOrganization" },
+              new { httpMethod = new HttpMethodConstraint("GET") });
             routes.AddStorefrontRoute("API.Account.quotes", "storefrontapi/account/quotes", new { controller = "ApiAccount", action = "GetCustomerQuotes" },
               new { httpMethod = new HttpMethodConstraint("GET") });
             routes.AddStorefrontRoute("API.Account.UpdateAccount", "storefrontapi/account", new { controller = "ApiAccount", action = "UpdateAccount" }, new { httpMethod = new HttpMethodConstraint("POST") });
             routes.AddStorefrontRoute("API.Account.ChangePassword", "storefrontapi/account/password", new { controller = "ApiAccount", action = "ChangePassword" }, new { httpMethod = new HttpMethodConstraint("POST") });
             routes.AddStorefrontRoute("API.Account.UpdateAddresses", "storefrontapi/account/addresses", new { controller = "ApiAccount", action = "UpdateAddresses" }, new { httpMethod = new HttpMethodConstraint("POST") });
+            routes.AddStorefrontRoute("API.Account.UpdateOrganization", "storefrontapi/account/organization", new { controller = "ApiAccount", action = "UpdateOrganization" }, new { httpMethod = new HttpMethodConstraint("POST") });
 
             // Order API
             routes.AddStorefrontRoute("API.Orders", "storefrontapi/orders/search", new { controller = "ApiOrder", action = "SearchCustomerOrders" });

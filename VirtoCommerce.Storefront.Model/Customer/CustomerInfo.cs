@@ -24,11 +24,15 @@ namespace VirtoCommerce.Storefront.Model.Customer
         /// </summary>
         public string UserId { get; set; }
         /// <summary>
-        /// Type of account fro this customer: personal or b2b
+        /// Type of account for this customer: personal or distributor
         /// </summary>
         public AccountType AccountType { get; set; }
         /// <summary>
-        /// Returns company name for b2b account
+        /// Returns company id for distributor account
+        /// </summary>
+        public string CompanyId { get; set; }
+        /// <summary>
+        /// Returns company name for distributor account
         /// </summary>
         public string CompanyName { get; set; }
         /// <summary>

@@ -36,6 +36,16 @@ namespace VirtoCommerce.Storefront.Controllers.Api
             return Json(WorkContext.CurrentCustomer);
         }
 
+        // GET: storefrontapi/account/organization
+        [HttpGet]
+        public ActionResult GetCurrentCustomerOrganization()
+        {
+            var contact = WorkContext.CurrentCustomer;
+            var organization = _customerService.GetOrganizationById(contact.CompanyId);
+
+            return Json(organization);
+        }
+
         // GET: storefrontapi/account/quotes
         [HttpGet]
         public ActionResult GetCustomerQuotes(int pageNumber, int pageSize, IEnumerable<SortInfo> sortInfos)
@@ -111,6 +121,14 @@ namespace VirtoCommerce.Storefront.Controllers.Api
                 await _customerService.UpdateCustomerAsync(contact);
             }
 
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        // POST: storefrontapi/account/organization
+        [HttpPost]
+        public async Task<ActionResult> UpdateOrganization(Organization organization)
+        {
+            await _customerService.UpdateOrganizationAsync(organization);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }

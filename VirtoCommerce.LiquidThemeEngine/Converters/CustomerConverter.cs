@@ -27,7 +27,11 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
 
             result.InjectFrom<NullableAndEnumValueInjecter>(customer);
             result.Name = customer.FullName;
-            if(customer.DefaultAddress != null)
+            result.IsDistributorAccount = customer.AccountType == StorefrontModel.Security.AccountType.Distributor;
+            result.CompanyId = customer.CompanyId;
+            result.CompanyName = customer.CompanyName;
+
+            if (customer.DefaultAddress != null)
             {
                 result.DefaultAddress = ToLiquidAddress(customer.DefaultAddress);
             }
