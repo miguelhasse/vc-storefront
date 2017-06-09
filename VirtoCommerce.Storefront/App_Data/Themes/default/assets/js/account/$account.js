@@ -26,12 +26,14 @@ angular.module(moduleName, ['ngResource', 'ngComponentRouter', 'credit-cards', '
         customer: '<'
     },
     $routeConfig: [
-         { path: '/orders/...', name: 'Orders', component: 'vcAccountOrders'},
+         { path: '/orders/...', name: 'Orders', component: 'vcAccountOrders' },
          { path: '/subscriptions/...', name: 'Subscriptions', component: 'vcAccountSubscriptions' },
          { path: '/quotes', name: 'Quotes', component: 'vcAccountQuotes' },
          { path: '/profile', name: 'Profile', component: 'vcAccountProfileUpdate', useAsDefault: true },
          { path: '/addresses', name: 'Addresses', component: 'vcAccountAddresses' },
-         { path: '/changePassword', name: 'PasswordChange', component: 'vcAccountPasswordChange' }
+         { path: '/changePassword', name: 'PasswordChange', component: 'vcAccountPasswordChange' },
+         { path: '/companyInfo', name: 'CompanyInfo', component: 'vcAccountCompanyInfo' },
+         { path: '/companyMembers/...', name: 'CompanyMembers', component: 'vcAccountCompanyMembers' }
     ],
     controller: ['storefront.accountApi', 'storefrontApp.mainContext', 'loadingIndicatorService', function (accountApi, mainContext, loader) {
         var $ctrl = this;
@@ -64,6 +66,18 @@ angular.module(moduleName, ['ngResource', 'ngComponentRouter', 'credit-cards', '
         $ctrl.changePassword = function (changePasswordData) {
             return loader.wrapLoading(function () {
                 return accountApi.changePassword(changePasswordData).$promise;
+            });
+        };
+
+        $ctrl.getCustomerOrganization = function (callback) {
+            loader.wrapLoading(function () {
+                return accountApi.getCustomerOrganization(callback).$promise;
+            });
+        };
+
+        $ctrl.updateCustomerOrganization = function (updateRequest) {
+            loader.wrapLoading(function () {
+                return accountApi.updateCustomerOrganization(updateRequest).$promise;
             });
         };
     }]
