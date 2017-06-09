@@ -27,7 +27,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
 
             result.InjectFrom<NullableAndEnumValueInjecter>(customer);
             result.Name = customer.FullName;
-            result.IsDistributorAccount = customer.AccountType == StorefrontModel.Security.AccountType.Distributor;
+            result.IsCorporateAccount = customer.AccountType == StorefrontModel.Security.AccountType.Corporate;
             result.CompanyId = customer.CompanyId;
             result.CompanyName = customer.CompanyName;
 

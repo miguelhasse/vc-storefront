@@ -75,7 +75,7 @@ namespace VirtoCommerce.Storefront.Services
                         if (organization != null) {
                             result.CompanyId = organization.Id;
                             result.CompanyName = organization.Name;
-                            result.AccountType = Model.Security.AccountType.Distributor;
+                            result.AccountType = Model.Security.AccountType.Corporate;
                         }
                     }
                 }
@@ -100,7 +100,7 @@ namespace VirtoCommerce.Storefront.Services
         {
             var contact = customer.ToCustomerContactDto();
 
-            if (customer.AccountType == Model.Security.AccountType.Distributor) {
+            if (customer.AccountType == Model.Security.AccountType.Corporate) {
                 var organization = new customerDto.Organization { Name = customer.CompanyName };
                 var result = await _customerApi.CustomerModule.CreateOrganizationAsync(organization);
 

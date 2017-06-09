@@ -3,6 +3,6 @@
     public enum AccountType
     {
         Personal,
-        Distributor
+        Corporate
     }
 }

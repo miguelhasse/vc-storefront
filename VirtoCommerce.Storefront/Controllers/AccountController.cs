@@ -144,9 +144,9 @@ namespace VirtoCommerce.Storefront.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Register(Register formModel)
         {
-            if (formModel.AccountType == Model.Security.AccountType.Distributor && string.IsNullOrWhiteSpace(formModel.CompanyName))
+            if (formModel.AccountType == Model.Security.AccountType.Corporate && string.IsNullOrWhiteSpace(formModel.CompanyName))
             {
-                ModelState.AddModelError("Company name", "must not be empty for distributor account");
+                ModelState.AddModelError("Company name", "must not be empty for corporate account");
             }
 
             if (!ModelState.IsValid)
