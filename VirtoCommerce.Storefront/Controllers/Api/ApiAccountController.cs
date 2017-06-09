@@ -131,5 +131,26 @@ namespace VirtoCommerce.Storefront.Controllers.Api
             await _customerService.UpdateOrganizationAsync(organization);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        // POST: storefrontapi/account/organization/members
+        [HttpPost]
+        public async Task<ActionResult> SearchOrganizationMembers(OrganizationMembersSearchCriteria criteria)
+        {
+            if (criteria == null)
+            {
+                criteria = new OrganizationMembersSearchCriteria();
+            }
+
+            var contact = WorkContext.CurrentCustomer;
+            criteria.MemberId = contact.CompanyId;
+
+            var members = await _customerService.SearchCompanyMembers(criteria);
+
+            return Json(new
+            {
+                Results = members,
+                TotalCount = members.TotalItemCount
+            });
+        }
     }
 }

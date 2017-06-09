@@ -168,6 +168,12 @@ namespace VirtoCommerce.Storefront.Services
             await _customerApi.CustomerModule.UpdateOrganizationAsync(organizationDto);
         }
 
+        public virtual async Task<IPagedList<MemberInfo>> SearchCompanyMembers(OrganizationMembersSearchCriteria criteria) {
+            customerDto.GenericSearchResultMember result = await _customerApi.CustomerModule.SearchAsync(criteria.ToMembersSearchCriteriaDto());
+            
+            return new StaticPagedList<MemberInfo>(result.Results.Select(x => x.ToMemberCustomerInfoDto()), criteria.PageNumber, criteria.PageSize, result.TotalCount.Value);
+        }
+
         #endregion
 
         #region IObserver<CreateOrderEvent> Members

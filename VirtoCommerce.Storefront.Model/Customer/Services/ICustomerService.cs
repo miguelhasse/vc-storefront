@@ -17,5 +17,6 @@ namespace VirtoCommerce.Storefront.Model.Customer.Services
         IPagedList<Vendor> SearchVendors(string keyword, int pageNumber, int pageSize, IEnumerable<SortInfo> sortInfos);
         Organization GetOrganizationById(string organizationId);
         Task UpdateOrganizationAsync(Organization organization);
+        Task<IPagedList<MemberInfo>> SearchCompanyMembers(OrganizationMembersSearchCriteria criteria);
     }
 }

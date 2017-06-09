@@ -72,6 +72,7 @@ namespace VirtoCommerce.Storefront
             routes.AddStorefrontRoute("API.Account.ChangePassword", "storefrontapi/account/password", new { controller = "ApiAccount", action = "ChangePassword" }, new { httpMethod = new HttpMethodConstraint("POST") });
             routes.AddStorefrontRoute("API.Account.UpdateAddresses", "storefrontapi/account/addresses", new { controller = "ApiAccount", action = "UpdateAddresses" }, new { httpMethod = new HttpMethodConstraint("POST") });
             routes.AddStorefrontRoute("API.Account.UpdateOrganization", "storefrontapi/account/organization", new { controller = "ApiAccount", action = "UpdateOrganization" }, new { httpMethod = new HttpMethodConstraint("POST") });
+            routes.AddStorefrontRoute("API.Account.SearchOrganizationMembers", "storefrontapi/account/organization/members", new { controller = "ApiAccount", action = "SearchOrganizationMembers" }, new { httpMethod = new HttpMethodConstraint("POST") });
 
             // Order API
             routes.AddStorefrontRoute("API.Orders", "storefrontapi/orders/search", new { controller = "ApiOrder", action = "SearchCustomerOrders" });

@@ -69,6 +69,16 @@ namespace VirtoCommerce.Storefront.Converters
         {
             return CustomerConverterInstance.ToCustomerOrganization(organization);
         }
+
+        public static customerDto.MembersSearchCriteria ToMembersSearchCriteriaDto(this OrganizationMembersSearchCriteria criteria)
+        {
+            return CustomerConverterInstance.ToMembersSearchCriteriaDto(criteria);
+        }
+
+        public static MemberInfo ToMemberCustomerInfoDto(this customerDto.Member member)
+        {
+            return CustomerConverterInstance.ToMemberCustomerInfoDto(member);
+        }
     }
 
     public class CustomerConverter
@@ -289,6 +299,32 @@ namespace VirtoCommerce.Storefront.Converters
             }
 
             return retVal;
+        }
+
+        public virtual customerDto.MembersSearchCriteria ToMembersSearchCriteriaDto(OrganizationMembersSearchCriteria criteria)
+        {
+            var result = new customerDto.MembersSearchCriteria();
+
+            result.InjectFrom(criteria);
+
+            result.Skip = criteria.Start;
+            result.Take = criteria.PageSize;
+            result.Sort = criteria.Sort;
+
+            return result;
+        }
+
+        public virtual MemberInfo ToMemberCustomerInfoDto(customerDto.Member member)
+        {
+            var result = new MemberInfo();
+            result.InjectFrom<NullableAndEnumValueInjecter>(member);
+            
+            if (member.Addresses != null)
+            {
+                result.Addresses = member.Addresses.Select(ToAddress).ToList();
+            }
+
+            return result;
         }
     }
 }
