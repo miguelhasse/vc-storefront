@@ -1,14 +1,20 @@
-hr.hr--grid-border {
-    margin-left: 30px;
+/*nav*/
+@media (min-width: 768px) {
+  #dashboard {
+    display: block !important;
+  }
+}
+@media (max-width: 768px) {
+  #dashboard {
+    display: none;
+  }
 }
 @media (min-width: 768px) {
-    hr.hr--grid-border {
-        display: none;
-    }
+  .toggle-dashboard {
+    display: none !important;
+  }
 }
 
-
-/*nav*/
 .nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -52,6 +58,11 @@ hr.hr--grid-border {
 }
 .nav > li > a > img {
   max-width: none;
+}
+@media (max-width: 768px) {
+  h1.nav-title, h2.nav-title, h3.nav-title, h4.nav-title, h5.nav-title, h6.nav-title {
+    text-align: center;
+  }
 }
 .nav-tabs {
   border-bottom: 1px solid #ddd;
@@ -153,27 +164,21 @@ hr.hr--grid-border {
 }
 .nav-justified > li > a {
   margin-bottom: 5px;
-  text-align: left;
+  text-align: center;
 }
 .nav-justified > .dropdown .dropdown-menu {
   top: auto;
   left: auto;
 }
 @media (min-width: 768px) {
-  .nav-justified:not(.nav-justified-inverse) > li {
+  .nav-justified:not(.nav-justified-fixed) > li {
     display: table-cell;
     width: 1%;
   }
-  .nav-justified:not(.nav-justified-inverse) > li > a {
-    margin-bottom: 0;
+  .nav-justified > li > a {
+    text-align: left;
   }
-}
-@media (max-width: 768px) {
-  .nav-justified-inverse > li {
-    display: table-cell;
-    float: left;
-  }
-  .nav-justified-inverse > li > a {
+  .nav-justified:not(.nav-justified-fixed) > li > a {
     margin-bottom: 0;
   }
 }
