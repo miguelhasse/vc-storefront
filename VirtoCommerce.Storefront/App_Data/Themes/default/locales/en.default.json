@@ -246,7 +246,6 @@
             }
         },
         "sidebar": {
-            "dashboard":  "Dashboard", 
             "filters": "Filters",
             "shop_by": "Shop By",
             "all": "All",
@@ -276,7 +275,7 @@
         }
     },
     "customer": {
-        "account": { 
+        "account": {
             "title": "My Account",
             "details": "Account Details",
             "return": "Return to Account Details",

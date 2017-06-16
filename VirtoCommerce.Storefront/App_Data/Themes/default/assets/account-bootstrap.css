@@ -1,20 +1,14 @@
-/*nav*/
-@media (min-width: 768px) {
-  #dashboard {
-    display: block !important;
-  }
-}
-@media (max-width: 768px) {
-  #dashboard {
-    display: none;
-  }
+hr.hr--grid-border {
+    margin-left: 30px;
 }
 @media (min-width: 768px) {
-  .toggle-dashboard {
-    display: none !important;
-  }
+    hr.hr--grid-border {
+        display: none;
+    }
 }
 
+
+/*nav*/
 .nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -58,11 +52,6 @@
 }
 .nav > li > a > img {
   max-width: none;
-}
-@media (max-width: 768px) {
-  h1.nav-title, h2.nav-title, h3.nav-title, h4.nav-title, h5.nav-title, h6.nav-title {
-    text-align: center;
-  }
 }
 .nav-tabs {
   border-bottom: 1px solid #ddd;
@@ -164,21 +153,27 @@
 }
 .nav-justified > li > a {
   margin-bottom: 5px;
-  text-align: center;
+  text-align: left;
 }
 .nav-justified > .dropdown .dropdown-menu {
   top: auto;
   left: auto;
 }
 @media (min-width: 768px) {
-  .nav-justified:not(.nav-justified-fixed) > li {
+  .nav-justified:not(.nav-justified-inverse) > li {
     display: table-cell;
     width: 1%;
   }
-  .nav-justified > li > a {
-    text-align: left;
+  .nav-justified:not(.nav-justified-inverse) > li > a {
+    margin-bottom: 0;
   }
-  .nav-justified:not(.nav-justified-fixed) > li > a {
+}
+@media (max-width: 768px) {
+  .nav-justified-inverse > li {
+    display: table-cell;
+    float: left;
+  }
+  .nav-justified-inverse > li > a {
     margin-bottom: 0;
   }
 }
