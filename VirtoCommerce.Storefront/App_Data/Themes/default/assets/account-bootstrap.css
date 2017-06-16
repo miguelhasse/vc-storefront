@@ -1,14 +1,4 @@
-hr.hr--grid-border {
-    margin-left: 30px;
-}
-@media (min-width: 768px) {
-    hr.hr--grid-border {
-        display: none;
-    }
-}
-
-
-/*nav*/
+/*tabs*/
 .nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -127,7 +117,6 @@ hr.hr--grid-border {
 }
 .nav-pills > li > a {
   border-radius: 4px;
-  padding: 5px 15px;
 }
 .nav-pills > li + li {
   margin-left: 2px;
@@ -153,27 +142,18 @@ hr.hr--grid-border {
 }
 .nav-justified > li > a {
   margin-bottom: 5px;
-  text-align: left;
+  text-align: center;
 }
 .nav-justified > .dropdown .dropdown-menu {
   top: auto;
   left: auto;
 }
 @media (min-width: 768px) {
-  .nav-justified:not(.nav-justified-inverse) > li {
+  .nav-justified > li {
     display: table-cell;
     width: 1%;
   }
-  .nav-justified:not(.nav-justified-inverse) > li > a {
-    margin-bottom: 0;
-  }
-}
-@media (max-width: 768px) {
-  .nav-justified-inverse > li {
-    display: table-cell;
-    float: left;
-  }
-  .nav-justified-inverse > li > a {
+  .nav-justified > li > a {
     margin-bottom: 0;
   }
 }
