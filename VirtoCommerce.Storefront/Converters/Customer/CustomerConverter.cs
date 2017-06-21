@@ -59,26 +59,6 @@ namespace VirtoCommerce.Storefront.Converters
         {
             return CustomerConverterInstance.ToCustomerDynamicPropertyDto(property);
         }
-
-        public static Organization ToOrganization(this customerDto.Organization organizationDto)
-        {
-            return CustomerConverterInstance.ToOrganization(organizationDto);
-        }
-
-        public static customerDto.Organization ToCustomerOrganization(this Organization organization)
-        {
-            return CustomerConverterInstance.ToCustomerOrganization(organization);
-        }
-
-        public static customerDto.MembersSearchCriteria ToMembersSearchCriteriaDto(this OrganizationMembersSearchCriteria criteria)
-        {
-            return CustomerConverterInstance.ToMembersSearchCriteriaDto(criteria);
-        }
-
-        public static MemberInfo ToMemberCustomerInfoDto(this customerDto.Member member)
-        {
-            return CustomerConverterInstance.ToMemberCustomerInfoDto(member);
-        }
     }
 
     public class CustomerConverter
@@ -256,75 +236,6 @@ namespace VirtoCommerce.Storefront.Converters
             retVal.FullName = customer.FullName;
 
             return retVal;
-        }
-
-        public virtual Organization ToOrganization(customerDto.Organization organizationDto)
-        {
-            Organization result = null;
-
-            if (organizationDto != null)
-            {
-                result = new Organization();
-                result.Id = organizationDto.Id;
-                result.Name = organizationDto.Name;
-                result.Description = organizationDto.Description;
-
-                if (organizationDto.Addresses != null)
-                {
-                    result.Addresses = organizationDto.Addresses.Select(ToAddress).ToList();
-                }
-
-                if (organizationDto.DynamicProperties != null)
-                {
-                    result.DynamicProperties = organizationDto.DynamicProperties.Select(ToDynamicProperty).ToList();
-                }
-            }
-
-            return result;
-        }
-
-        public virtual customerDto.Organization ToCustomerOrganization(Organization organization)
-        {
-            var retVal = new customerDto.Organization();
-            retVal.InjectFrom<NullableAndEnumValueInjecter>(organization);
-           
-            if (organization.Addresses != null)
-            {
-                retVal.Addresses = organization.Addresses.Select(ToCustomerAddressDto).ToList();
-            }
-
-            if (organization.DynamicProperties != null)
-            {
-                retVal.DynamicProperties = organization.DynamicProperties.Select(ToCustomerDynamicPropertyDto).ToList();
-            }
-
-            return retVal;
-        }
-
-        public virtual customerDto.MembersSearchCriteria ToMembersSearchCriteriaDto(OrganizationMembersSearchCriteria criteria)
-        {
-            var result = new customerDto.MembersSearchCriteria();
-
-            result.InjectFrom(criteria);
-
-            result.Skip = criteria.Start;
-            result.Take = criteria.PageSize;
-            result.Sort = criteria.Sort;
-
-            return result;
-        }
-
-        public virtual MemberInfo ToMemberCustomerInfoDto(customerDto.Member member)
-        {
-            var result = new MemberInfo();
-            result.InjectFrom<NullableAndEnumValueInjecter>(member);
-            
-            if (member.Addresses != null)
-            {
-                result.Addresses = member.Addresses.Select(ToAddress).ToList();
-            }
-
-            return result;
         }
     }
 }

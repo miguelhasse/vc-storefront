@@ -15,8 +15,5 @@ namespace VirtoCommerce.Storefront.Model.Customer.Services
         Task<Vendor[]> GetVendorsByIdsAsync(Store store, Language language,  params string[] vendorIds);
         Vendor[] GetVendorsByIds(Store store, Language language, params string[] vendorIds);
         IPagedList<Vendor> SearchVendors(string keyword, int pageNumber, int pageSize, IEnumerable<SortInfo> sortInfos);
-        Organization GetOrganizationById(string organizationId);
-        Task UpdateOrganizationAsync(Organization organization);
-        Task<IPagedList<MemberInfo>> SearchCompanyMembers(OrganizationMembersSearchCriteria criteria);
     }
 }

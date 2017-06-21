@@ -156,24 +156,6 @@ namespace VirtoCommerce.Storefront.Services
             return new StaticPagedList<Vendor>(result.Vendors.Select(x => x.ToVendor(workContext.CurrentLanguage, workContext.CurrentStore)), pageNumber, pageSize, result.TotalCount.Value);
         }
 
-        public virtual Organization GetOrganizationById(string organizationId)
-        {
-            var retVal = _customerApi.CustomerModule.GetOrganizationById(organizationId).ToOrganization();
-            return retVal;
-        }
-
-        public virtual async Task UpdateOrganizationAsync(Organization organization)
-        {
-            var organizationDto = organization.ToCustomerOrganization();
-            await _customerApi.CustomerModule.UpdateOrganizationAsync(organizationDto);
-        }
-
-        public virtual async Task<IPagedList<MemberInfo>> SearchCompanyMembers(OrganizationMembersSearchCriteria criteria) {
-            customerDto.GenericSearchResultMember result = await _customerApi.CustomerModule.SearchAsync(criteria.ToMembersSearchCriteriaDto());
-            
-            return new StaticPagedList<MemberInfo>(result.Results.Select(x => x.ToMemberCustomerInfoDto()), criteria.PageNumber, criteria.PageSize, result.TotalCount.Value);
-        }
-
         #endregion
 
         #region IObserver<CreateOrderEvent> Members

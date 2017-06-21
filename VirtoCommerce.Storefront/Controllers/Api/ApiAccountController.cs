@@ -36,16 +36,6 @@ namespace VirtoCommerce.Storefront.Controllers.Api
             return Json(WorkContext.CurrentCustomer);
         }
 
-        // GET: storefrontapi/account/organization
-        [HttpGet]
-        public ActionResult GetCurrentCustomerOrganization()
-        {
-            var contact = WorkContext.CurrentCustomer;
-            var organization = _customerService.GetOrganizationById(contact.CompanyId);
-
-            return Json(organization);
-        }
-
         // GET: storefrontapi/account/quotes
         [HttpGet]
         public ActionResult GetCustomerQuotes(int pageNumber, int pageSize, IEnumerable<SortInfo> sortInfos)
@@ -122,35 +112,6 @@ namespace VirtoCommerce.Storefront.Controllers.Api
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
-        // POST: storefrontapi/account/organization
-        [HttpPost]
-        public async Task<ActionResult> UpdateOrganization(Organization organization)
-        {
-            await _customerService.UpdateOrganizationAsync(organization);
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-
-        // POST: storefrontapi/account/organization/members
-        [HttpPost]
-        public async Task<ActionResult> SearchOrganizationMembers(OrganizationMembersSearchCriteria criteria)
-        {
-            if (criteria == null)
-            {
-                criteria = new OrganizationMembersSearchCriteria();
-            }
-
-            var contact = WorkContext.CurrentCustomer;
-            criteria.MemberId = contact.CompanyId;
-
-            var members = await _customerService.SearchCompanyMembers(criteria);
-
-            return Json(new
-            {
-                Results = members,
-                TotalCount = members.TotalItemCount
-            });
         }
     }
 }
